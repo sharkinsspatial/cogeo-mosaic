@@ -3,7 +3,7 @@
 import os
 import sys
 import warnings
-from typing import Any, Callable, Dict, List, Optional, Sequence, Tuple
+from typing import Any, Callable, Dict, List, Optional, Sequence, Tuple, Union
 
 import click
 import mercantile
@@ -68,7 +68,7 @@ class MosaicJSON(BaseModel):
     quadkey_zoom: Optional[int]
     bounds: List[float] = Field([-180, -90, 180, 90])
     center: Optional[Tuple[float, float, int]]
-    tiles: Dict[str, List[str]]
+    tiles: Dict[str, List[Union[str, Dict[str, List[str]]]]]
 
     class Config:
         """Validate model on update."""
